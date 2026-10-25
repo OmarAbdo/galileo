@@ -118,6 +118,11 @@ def test_an_empty_bank_is_reported(tmp_path: Path) -> None:
     assert command(tmp_path, None) == (1, "the python kata bank is empty\n")
 
 
+def test_a_kata_in_another_language_is_asked_for_by_name(tmp_path: Path) -> None:
+    bank(tmp_path, ("double", DOUBLE))
+    assert command(tmp_path, "go") == (1, "the go kata bank is empty\n")
+
+
 def test_the_command_line_knows_kata_and_its_actions(tmp_path: Path) -> None:
     output = io.StringIO()
     assert run(["kata", "stop"], tmp_path, NOW, output) == 0

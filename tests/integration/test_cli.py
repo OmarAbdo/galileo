@@ -53,7 +53,7 @@ def test_bad_data_is_reported(tmp_path: Path) -> None:
 
 def test_the_commands_and_their_actions() -> None:
     assert sorted(COMMANDS) == ["baseline", "kata", "quiz", "score", "update"]
-    assert COMMANDS["kata"].actions == ("check", "stop")
+    assert COMMANDS["kata"].actions == ("check", "stop", "python", "go", "java", "typescript")
 
 
 def test_update_before_an_install_says_how(tmp_path: Path) -> None:
