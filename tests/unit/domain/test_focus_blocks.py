@@ -59,6 +59,13 @@ def test_two_blocks_add_up() -> None:
     assert focus_minutes(samples, WORK) == pytest.approx(25.0)
 
 
+def test_two_samplers_at_once_dont_count_twice() -> None:
+    doubled = run("code.exe", 12) + [
+        Sample(sample.taken + timedelta(seconds=1), sample.app, 0) for sample in run("code.exe", 12)
+    ]
+    assert focus_minutes(doubled, WORK) == pytest.approx(12.0)
+
+
 def test_worked_means_any_moment_on_a_work_app_while_present() -> None:
     assert worked(run("chrome.exe", 5) + run("code.exe", 0.25, after=5), WORK)
     assert not worked(run("chrome.exe", 5) + run("code.exe", 1, after=5, idle=600), WORK)
