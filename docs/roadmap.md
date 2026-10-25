@@ -30,7 +30,7 @@ help.
 | 1.5 | feature | Hands: Go, Java and TypeScript katas | integration per language; a missing toolchain is skipped with its reason | ⬜ |
 | 1.6 | feature | Focus: the active-window sampler, and blocks of 10+ minutes on apps Omar marks as work | unit: blocks from samples. integration: a fake window source | ⬜ |
 | 1.7 | feature | Understanding: questions from a merged diff (changed functions, inputs from tests, answers by running) and `galileo quiz` | unit: selection. integration: a real diff in a temporary repo | ⬜ |
-| 1.8 | feature | `galileo score`: the three scores and the lowest | acceptance: a seeded data folder | ⬜ |
+| 1.8 | feature | `galileo score`: the three scores and the lowest | acceptance: a seeded data folder | ✅ |
 | 1.9 | chore | Baseline week: Omar works as usual; Galileo only measures | none | ⬜ |
 
 ## Phase 2: the guard (rules 3 and 4, modes)
