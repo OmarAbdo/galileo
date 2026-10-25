@@ -89,6 +89,11 @@ def test_starting_again_returns_the_open_kata() -> None:
     assert session.started == NOW - timedelta(minutes=5)
 
 
+def test_starting_with_an_empty_bank_is_refused() -> None:
+    with pytest.raises(NoKataError, match="the go kata bank is empty"):
+        start_kata(tools(passes=True), "go", NOW)
+
+
 def test_checking_without_an_open_kata_is_refused() -> None:
     with pytest.raises(NoKataError, match="galileo kata"):
         check_kata(tools(passes=True), NOW)

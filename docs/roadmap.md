@@ -28,7 +28,7 @@ help.
 | 1.3b | feature | `galileo baseline`, the first command (`python -m galileo.adapters.cli.main` until it's installed): freezes what the week allows and says per kind what is still missing | integration: each kind's line; a short week; bad data; the module lists its commands | ✅ |
 | 1.4a | feature | Kata rules: the next kata is the one done longest ago; a pass records the time as a multiple of the kata's reference time; an attempt open over an hour isn't counted | unit: the order; hands values; start, check and stop with fakes | ✅ |
 | 1.4b | feature | The kata files: the TOML bank, Omar's desk (the open kata, its folder, the history of passes) and a stdlib `unittest` runner for Python, in a process of its own | integration: a real run passes and fails; the open kata survives between processes; corrupt files name their line | ✅ |
-| 1.4c | feature | `galileo kata`, `galileo kata check`, `galileo kata stop` | integration: start, a failing check, a passing check that records hands, stop | ⬜ |
+| 1.4c | feature | `galileo kata`, `galileo kata check`, `galileo kata stop` | integration: start, a failing check, a passing check that records hands, stop | ✅ |
 | 1.4d | feature | The Python kata bank: about ten katas for the syntax Omar wants back, each with a reference solution kept in the tests | integration: every kata fails on its starting file and passes with its reference | ⬜ |
 | 1.5 | feature | Hands: Go, Java and TypeScript katas | integration per language; a missing toolchain is skipped with its reason | ⬜ |
 | 1.6 | feature | Focus: the active-window sampler, and blocks of 10+ minutes on apps Omar marks as work | unit: blocks from samples. integration: a fake window source | ⬜ |
