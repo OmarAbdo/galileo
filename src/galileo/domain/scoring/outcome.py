@@ -31,10 +31,14 @@ class Score:
     records: tuple[Record, ...] = ()
 
 
-def recent(records: Iterable[Record], today: date) -> list[float]:
-    """The values of the last WINDOW_DAYS days, today included."""
+def in_window(records: Iterable[Record], today: date) -> list[Record]:
+    """The records of the last WINDOW_DAYS days, today included."""
     first = today - timedelta(days=WINDOW_DAYS - 1)
-    return [record.value for record in records if first <= record.day <= today]
+    return [record for record in records if first <= record.day <= today]
+
+
+def recent(records: Iterable[Record], today: date) -> list[float]:
+    return [record.value for record in in_window(records, today)]
 
 
 def share(score: Score, today: date) -> float:

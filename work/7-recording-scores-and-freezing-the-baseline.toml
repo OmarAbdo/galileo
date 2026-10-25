@@ -1,0 +1,4 @@
+id = "7"
+title = "Recording scores and freezing the baseline"
+kind = "feature"
+scope = ["src/galileo/domain/scoring/**", "src/galileo/application/baseline.py", "src/galileo/adapters/**", "docs/roadmap.md"]
