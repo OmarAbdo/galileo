@@ -1,0 +1,4 @@
+id = "10"
+title = "Markdown lint settings"
+kind = "chore"
+scope = [".markdownlint.json"]
