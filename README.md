@@ -71,5 +71,5 @@ galileo score                        # focus, understanding, hands, and the lowe
 | Part | Status (2026-10-25) |
 |---|---|
 | Problem, design, decisions, roadmap, attacks | Written |
-| Scores, the outcome, the baseline, Python katas, the install | Built ([docs/roadmap.md](docs/roadmap.md), phase 1) |
-| Focus and understanding scores, the guard, jobs | Not built yet |
+| Phase 1, the meter: the three scores, the outcome, the baseline, twelve Python katas, the quiz, the focus sampler, the install | Built ([docs/roadmap.md](docs/roadmap.md)) |
+| Go, Java and TypeScript katas; phase 2 (the guard); phase 3 (jobs and review) | Not built yet |

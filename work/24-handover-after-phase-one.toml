@@ -1,0 +1,4 @@
+id = "24"
+title = "Handover after phase one"
+kind = "chore"
+scope = ["STARTER_PROMPT.md", "README.md", "docs/roadmap.md"]
