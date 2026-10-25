@@ -2,7 +2,7 @@
 
 import io
 import json
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 
 from galileo.adapters.cli.main import run
@@ -10,6 +10,7 @@ from galileo.adapters.cli.score_command import score
 from galileo.adapters.storage.score_files import ScoreFiles
 
 TODAY = date(2026, 11, 1)
+NOW = datetime(2026, 11, 1, 12, 0)
 
 
 def seed(folder: Path, kind: str, *values: float) -> None:
@@ -43,5 +44,5 @@ def test_hands_shows_seconds_and_its_share(tmp_path: Path) -> None:
 
 def test_the_command_line_knows_score(tmp_path: Path) -> None:
     output = io.StringIO()
-    assert run(["score"], tmp_path, TODAY, output) == 0
+    assert run(["score"], tmp_path, NOW, output) == 0
     assert output.getvalue().endswith("(0 until every kind has a baseline)\n")

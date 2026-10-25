@@ -20,7 +20,11 @@ class CheckResult:
     passed: bool
     output: str
     seconds: float = 0.0
-    counted: bool = False
+    value: float | None = None  # what was recorded for hands, if anything
+
+    @property
+    def counted(self) -> bool:
+        return self.value is not None
 
 
 class NoKataError(LookupError):
@@ -64,8 +68,10 @@ def start_kata(tools: KataTools, language: str, now: datetime) -> Session:
     session = tools.desk.current()
     if session is not None:
         return session
-    kata = next_kata(tools.bank.katas(language), tools.desk.history())
-    return tools.desk.open(kata, now)
+    katas = tools.bank.katas(language)
+    if not katas:
+        raise NoKataError(f"the {language} kata bank is empty")
+    return tools.desk.open(next_kata(katas, tools.desk.history()), now)
 
 
 def check_kata(tools: KataTools, now: datetime) -> CheckResult:
@@ -82,7 +88,7 @@ def check_kata(tools: KataTools, now: datetime) -> CheckResult:
         tools.recorder.append(Kind.HANDS, Record(now.date(), value))
     tools.desk.remember(Attempt(session.kata, now.date(), seconds))
     tools.desk.close()
-    return CheckResult(passed=True, output=run.output, seconds=seconds, counted=value is not None)
+    return CheckResult(passed=True, output=run.output, seconds=seconds, value=value)
 
 
 def find(bank: KataBank, session: Session) -> Kata:

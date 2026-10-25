@@ -1,0 +1,4 @@
+id = "14"
+title = "The galileo kata command"
+kind = "feature"
+scope = ["src/galileo/adapters/cli/**", "docs/roadmap.md", "src/galileo/application/katas.py"]
