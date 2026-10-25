@@ -55,10 +55,12 @@ old one struck through below it.
 - **What:** Omar earns every result; results arrive without fanfare; no dead waiting; his part
   stays his; Claude talks less; it measures Omar ([design.md](design.md)).
 
-## G7. The outcome: the lowest of focus, understanding and hands (proposed)
+## G7. The outcome: the lowest of focus, understanding and hands
 
 - **When, who:** 2026-10-25, proposed by Claude. Omar: "we have many factors we care about here
-  focus, understanding, ability to code". To confirm in roadmap item 1.1.
+  focus, understanding, ability to code". Asked again with the stop value (below 0.8 of the
+  baseline), Omar answered "Perfect. I reviewed and everything seems alright"; defined in
+  doctrine.toml in roadmap item 1.2b.
 - **What:** each score as a share of the baseline week; the outcome is the lowest.
 - **Why:** no score can be bought with another. Doctrine scores its judges by the lower of two
   rates for the same reason (doctrine D16).
