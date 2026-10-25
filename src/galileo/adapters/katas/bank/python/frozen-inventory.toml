@@ -1,0 +1,43 @@
+title = "A frozen inventory"
+reference_seconds = 360
+prompt = """
+Write `Item` as a frozen dataclass with a `name`, a `price` and a `quantity` that defaults to 0.
+Write `total_value(items)`, the sum of price times quantity, and `restock(item, amount)`, which
+returns a new item with `amount` more and leaves the old one as it was.
+"""
+solution = '''
+class Item:
+    pass
+
+
+def total_value(items: list[Item]) -> float:
+    raise NotImplementedError
+
+
+def restock(item: Item, amount: int) -> Item:
+    raise NotImplementedError
+'''
+tests = '''
+import dataclasses
+import unittest
+
+from solution import Item, restock, total_value
+
+
+class InventoryTest(unittest.TestCase):
+    def test_quantity_defaults_to_zero(self) -> None:
+        self.assertEqual(Item("pen", 1.5).quantity, 0)
+
+    def test_total_value(self) -> None:
+        self.assertEqual(total_value([Item("pen", 1.5, 4), Item("ink", 3.0, 2)]), 12.0)
+        self.assertEqual(total_value([]), 0)
+
+    def test_restocking_makes_a_new_item(self) -> None:
+        pen = Item("pen", 1.5, 4)
+        self.assertEqual(restock(pen, 6), Item("pen", 1.5, 10))
+        self.assertEqual(pen.quantity, 4)
+
+    def test_items_are_frozen(self) -> None:
+        with self.assertRaises(dataclasses.FrozenInstanceError):
+            Item("pen", 1.5).price = 2.0
+'''

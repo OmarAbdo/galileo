@@ -1,0 +1,32 @@
+title = "FizzBuzz, lazily"
+reference_seconds = 240
+prompt = """
+Write `fizzbuzz(limit)` as a generator: it yields the numbers from 1 to `limit` as strings, but
+"Fizz" for multiples of 3, "Buzz" for multiples of 5 and "FizzBuzz" for multiples of both.
+"""
+solution = '''
+from collections.abc import Iterator
+
+
+def fizzbuzz(limit: int) -> Iterator[str]:
+    raise NotImplementedError
+'''
+tests = '''
+import types
+import unittest
+
+from solution import fizzbuzz
+
+
+class FizzBuzzTest(unittest.TestCase):
+    def test_the_first_fifteen(self) -> None:
+        expected = ["1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz"]
+        expected += ["11", "Fizz", "13", "14", "FizzBuzz"]
+        self.assertEqual(list(fizzbuzz(15)), expected)
+
+    def test_it_is_a_generator(self) -> None:
+        self.assertIsInstance(fizzbuzz(3), types.GeneratorType)
+
+    def test_nothing_up_to_zero(self) -> None:
+        self.assertEqual(list(fizzbuzz(0)), [])
+'''

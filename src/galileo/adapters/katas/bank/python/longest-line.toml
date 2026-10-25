@@ -1,0 +1,49 @@
+title = "The longest line"
+reference_seconds = 360
+prompt = """
+Write `longest_line(path)`: the longest line of the text file at `path`, without its line
+ending; the first one if several are as long; "" for an empty file. Write `count_lines(path)`:
+how many lines have something other than spaces on them. Read the file as UTF-8.
+"""
+solution = '''
+from pathlib import Path
+
+
+def longest_line(path: Path) -> str:
+    raise NotImplementedError
+
+
+def count_lines(path: Path) -> int:
+    raise NotImplementedError
+'''
+tests = '''
+import tempfile
+import unittest
+from pathlib import Path
+
+from solution import count_lines, longest_line
+
+
+class LinesTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.folder = tempfile.TemporaryDirectory()
+        self.addCleanup(self.folder.cleanup)
+
+    def file(self, text: str) -> Path:
+        path = Path(self.folder.name) / "text.txt"
+        path.write_text(text, encoding="utf-8")
+        return path
+
+    def test_the_longest_line_without_its_ending(self) -> None:
+        self.assertEqual(longest_line(self.file("ab\nabcd\nwxyz\n")), "abcd")
+
+    def test_an_empty_file(self) -> None:
+        self.assertEqual(longest_line(self.file("")), "")
+        self.assertEqual(count_lines(self.file("")), 0)
+
+    def test_blank_lines_dont_count(self) -> None:
+        self.assertEqual(count_lines(self.file("one\n\n   \ntwo\n")), 2)
+
+    def test_letters_beyond_ascii(self) -> None:
+        self.assertEqual(longest_line(self.file("café crème\nab\n")), "café crème")
+'''
