@@ -1,0 +1,4 @@
+id = "20"
+title = "Running the focus sampler"
+kind = "feature"
+scope = ["src/galileo/adapters/focus/**", "src/galileo/adapters/install.py", "src/galileo/adapters/cli/commands.py", "docs/roadmap.md", "README.md"]

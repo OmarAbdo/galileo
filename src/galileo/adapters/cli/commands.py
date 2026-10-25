@@ -1,12 +1,15 @@
 """The `galileo` commands: what runs each one, its one-line help, and its actions."""
 
+import json
 from collections.abc import Callable
 from dataclasses import dataclass
+from pathlib import Path
 
 from galileo.adapters.cli.baseline_command import baseline
 from galileo.adapters.cli.context import Context
 from galileo.adapters.cli.kata_command import kata
 from galileo.adapters.cli.score_command import score
+from galileo.adapters.focus.autostart import keep_sampling
 from galileo.adapters.install import update
 from galileo.adapters.storage.score_files import ScoreFiles
 
@@ -32,6 +35,9 @@ def update_now(context: Context) -> int:
         context.output.write("Not installed yet: run `python -m galileo.adapters.install`.\n")
         return 1
     commit = update(home)
+    startup = json.loads((home / "installed.json").read_text(encoding="utf-8")).get("startup")
+    if startup:
+        keep_sampling(home, Path(startup))
     context.output.write(f"Galileo is now at {commit[:12]}.\n")
     return 0
 

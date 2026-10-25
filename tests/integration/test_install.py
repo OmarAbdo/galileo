@@ -94,6 +94,18 @@ def test_galileo_update_reports_the_commit(repository: Path, tmp_path: Path) -> 
     assert output.getvalue() == f"Galileo is now at {commit[:12]}.\n"
 
 
+def test_galileo_update_keeps_the_sampler_going(repository: Path, tmp_path: Path) -> None:
+    home = tmp_path / "data" / "app"
+    install(repository, home, tmp_path / "bin", "HEAD")
+    installed = json.loads((home / "installed.json").read_text(encoding="utf-8"))
+    installed["startup"] = str(tmp_path / "Startup")
+    (home / "installed.json").write_text(json.dumps(installed), encoding="utf-8")
+    assert run(["update"], tmp_path / "data", datetime(2026, 11, 2, 9, 0), io.StringIO()) == 0
+    assert (tmp_path / "Startup" / "galileo-focus.vbs").exists()
+    kept = json.loads((home / "installed.json").read_text(encoding="utf-8"))
+    assert kept["startup"] == str(tmp_path / "Startup")
+
+
 def test_the_command_goes_where_the_path_already_looks() -> None:
     assert commands_folder().parts[-2:] == (".local", "bin")
 
