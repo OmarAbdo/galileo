@@ -1,0 +1,4 @@
+id = "16"
+title = "Python katas, six more"
+kind = "feature"
+scope = ["src/galileo/adapters/katas/bank/**", "docs/roadmap.md"]

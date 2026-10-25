@@ -30,7 +30,7 @@ help.
 | 1.4b | feature | The kata files: the TOML bank, Omar's desk (the open kata, its folder, the history of passes) and a stdlib `unittest` runner for Python, in a process of its own | integration: a real run passes and fails; the open kata survives between processes; corrupt files name their line | ✅ |
 | 1.4c | feature | `galileo kata`, `galileo kata check`, `galileo kata stop` | integration: start, a failing check, a passing check that records hands, stop | ✅ |
 | 1.4d | feature | The Python kata bank, first six: word counts, pairs that add up, run-length encoding, a reverse Polish calculator, a bank account class, oldest first. Each answer is kept in the tests, not in the bank | integration: every kata fails on its starting file and passes with its answer | ✅ |
-| 1.4e | feature | Six more Python katas: generators, dataclasses, files, recursion, Roman numerals, a deep merge | the same test | ⬜ |
+| 1.4e | feature | Six more Python katas: generators, dataclasses, files, recursion, Roman numerals, a deep merge | the same test | ✅ |
 | 1.5 | feature | Hands: Go, Java and TypeScript katas | integration per language; a missing toolchain is skipped with its reason | ⬜ |
 | 1.6 | feature | Focus: the active-window sampler, and blocks of 10+ minutes on apps Omar marks as work | unit: blocks from samples. integration: a fake window source | ⬜ |
 | 1.7 | feature | Understanding: questions from a merged diff (changed functions, inputs from tests, answers by running) and `galileo quiz` | unit: selection. integration: a real diff in a temporary repo | ⬜ |

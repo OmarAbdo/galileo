@@ -1,0 +1,35 @@
+title = "Flatten and depth"
+reference_seconds = 420
+prompt = """
+Nested lists hold numbers and other lists, as deep as you like. Write `flatten(nested)`, the
+numbers in the order they appear, in one flat list. Write `depth(nested)`: 1 for a flat list
+(also an empty one), and one more for each level of lists inside.
+"""
+solution = '''
+from typing import Any
+
+
+def flatten(nested: list[Any]) -> list[int]:
+    raise NotImplementedError
+
+
+def depth(nested: list[Any]) -> int:
+    raise NotImplementedError
+'''
+tests = '''
+import unittest
+
+from solution import depth, flatten
+
+
+class FlattenTest(unittest.TestCase):
+    def test_flatten_keeps_the_order(self) -> None:
+        self.assertEqual(flatten([1, [2, [3, [4]], 5], [], 6]), [1, 2, 3, 4, 5, 6])
+        self.assertEqual(flatten([]), [])
+
+    def test_depth(self) -> None:
+        self.assertEqual(depth([]), 1)
+        self.assertEqual(depth([1, 2]), 1)
+        self.assertEqual(depth([1, [2, [3, [4]]]]), 4)
+        self.assertEqual(depth([[], [[]]]), 3)
+'''

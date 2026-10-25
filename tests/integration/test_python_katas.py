@@ -21,9 +21,14 @@ def answer(kata: Kata) -> str:
     return (ANSWERS / f"{kata.name.replace('-', '_')}.py").read_text(encoding="utf-8")
 
 
+def test_the_bank_covers_generators_dataclasses_files_and_recursion() -> None:
+    names = {kata.name for kata in TomlBank().katas("python")}
+    assert {"fizzbuzz-generator", "frozen-inventory", "longest-line", "flatten"} <= names
+
+
 def test_every_starting_file_fails_and_every_answer_passes(tmp_path: Path) -> None:
     katas = TomlBank().katas("python")
-    assert len(katas) >= 6
+    assert len(katas) >= 12
     for kata in katas:
         assert not passes(tmp_path / f"{kata.name}-start", kata, kata.solution), kata.name
         assert passes(tmp_path / f"{kata.name}-answer", kata, answer(kata)), kata.name

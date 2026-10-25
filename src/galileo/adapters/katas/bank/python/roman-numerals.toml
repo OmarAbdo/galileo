@@ -1,0 +1,40 @@
+title = "Roman numerals"
+reference_seconds = 600
+prompt = """
+Write `to_roman(number)` for 1 to 3999, using the subtractive forms (4 is IV, 900 is CM), and
+`from_roman(text)`, which turns a numeral back into its number. `to_roman` raises `ValueError`
+outside 1 to 3999.
+"""
+solution = '''
+def to_roman(number: int) -> str:
+    raise NotImplementedError
+
+
+def from_roman(text: str) -> int:
+    raise NotImplementedError
+'''
+tests = '''
+import unittest
+
+from solution import from_roman, to_roman
+
+
+class RomanTest(unittest.TestCase):
+    def test_to_roman(self) -> None:
+        self.assertEqual(to_roman(4), "IV")
+        self.assertEqual(to_roman(1994), "MCMXCIV")
+        self.assertEqual(to_roman(3999), "MMMCMXCIX")
+
+    def test_from_roman(self) -> None:
+        self.assertEqual(from_roman("XLII"), 42)
+        self.assertEqual(from_roman("MCMXCIV"), 1994)
+
+    def test_every_number_there_and_back(self) -> None:
+        for number in range(1, 4000):
+            self.assertEqual(from_roman(to_roman(number)), number)
+
+    def test_out_of_range(self) -> None:
+        for number in (0, 4000):
+            with self.subTest(number=number), self.assertRaises(ValueError):
+                to_roman(number)
+'''

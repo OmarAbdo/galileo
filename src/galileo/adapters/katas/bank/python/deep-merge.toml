@@ -1,0 +1,43 @@
+title = "A deep merge"
+reference_seconds = 420
+prompt = """
+Write `merge(defaults, overrides)` for settings dicts. It returns a new dict with every key of
+both. Where both have a dict under the same key, those dicts are merged the same way, at any
+depth; otherwise the override wins. Neither argument changes.
+"""
+solution = '''
+from typing import Any
+
+
+def merge(defaults: dict[str, Any], overrides: dict[str, Any]) -> dict[str, Any]:
+    raise NotImplementedError
+'''
+tests = '''
+import copy
+import unittest
+
+from solution import merge
+
+DEFAULTS = {"theme": "light", "editor": {"tabs": 4, "font": {"size": 12, "name": "mono"}}}
+OVERRIDES = {"editor": {"font": {"size": 14}}, "telemetry": False}
+
+
+class MergeTest(unittest.TestCase):
+    def test_nested_dicts_merge_and_overrides_win(self) -> None:
+        self.assertEqual(
+            merge(DEFAULTS, OVERRIDES),
+            {
+                "theme": "light",
+                "editor": {"tabs": 4, "font": {"size": 14, "name": "mono"}},
+                "telemetry": False,
+            },
+        )
+
+    def test_a_value_replaces_a_dict(self) -> None:
+        self.assertEqual(merge({"editor": {"tabs": 4}}, {"editor": "off"}), {"editor": "off"})
+
+    def test_the_arguments_dont_change(self) -> None:
+        defaults, overrides = copy.deepcopy(DEFAULTS), copy.deepcopy(OVERRIDES)
+        merge(defaults, overrides)
+        self.assertEqual((defaults, overrides), (DEFAULTS, OVERRIDES))
+'''
