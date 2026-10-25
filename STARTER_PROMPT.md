@@ -40,8 +40,10 @@ How to work:
 
 State:
 - 2026-10-25: project created with doctrine init; Omar set up github.com/OmarAbdo/galileo.
-  Phase 0 (docs) opened as three pull requests.
-- Next: item 1.1, the outcome number, once Omar answers the roadmap's open question 1.
+  Phase 0 and items 1.1 and 1.2 merged. Omar set the required approvals to 0, so an item merges
+  once its gates pass; goalpost changes (doctrine.toml's outcome, `.github/`) still wait for his
+  approval. Work on without waiting for him; he reviews at the end of the day.
+- Next: the next open item in docs/roadmap.md (1.2b waits for Omar; 1.3 doesn't).
 
 TASK:
 <the task, or "take the next open item">
