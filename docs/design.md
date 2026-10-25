@@ -199,9 +199,9 @@ Until the installer exists (roadmap 2.7), Galileo's commands work (scores, katas
 nothing is enforced.
 
 **The voice notification.** Doctrine's settings run Omar's own voice script,
-`C:\Users\Omar\.claude\hooks\voice-notify.mjs`, at the end of every turn. Galileo can't remove a
-hook that doctrine adds, but the script is Omar's, not doctrine's, so it can check Galileo's mode
-itself and stay silent in learn mode (roadmap 2.8, Omar decides).
+`C:\Users\Omar\.claude\hooks\voice-notify.mjs`, at the end of every turn. Since 2026-10-25 it is
+silent unless a thread turned it on for itself (decision G15). In learn mode, Galileo refuses
+turning it on (attack A24).
 
 ## Data
 
