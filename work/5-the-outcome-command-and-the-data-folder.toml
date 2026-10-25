@@ -1,0 +1,4 @@
+id = "5"
+title = "The outcome command and the data folder"
+kind = "feature"
+scope = ["src/galileo/adapters/**", "docs/roadmap.md", "STARTER_PROMPT.md"]
