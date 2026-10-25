@@ -52,7 +52,7 @@ def test_bad_data_is_reported(tmp_path: Path) -> None:
 
 
 def test_the_commands_and_their_actions() -> None:
-    assert sorted(COMMANDS) == ["baseline", "kata", "score", "update"]
+    assert sorted(COMMANDS) == ["baseline", "kata", "quiz", "score", "update"]
     assert COMMANDS["kata"].actions == ("check", "stop")
 
 
