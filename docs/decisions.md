@@ -124,3 +124,18 @@ old one struck through below it.
 - **Consequences:** `claude --bare`, which skips the hooks in settings, only logs in with an API
   key, so it can't start on this PC (attack A4 keeps a test for it). Batch runs count against
   Pro's usage limits.
+
+## G15. The voice notification is off by default; a thread turns it on for itself only
+
+- **When, who:** 2026-10-25, Omar: "now i really think it's problamtic to the attention part of
+  the issue we're trying to solve here ... i want to be able to explicilty ask a claude code
+  thread to enable it only on its own scope".
+- **What:** Omar's own script, `C:\Users\Omar\.claude\hooks\voice-notify.mjs`, which doctrine's
+  settings run at the end of every turn, now stays silent unless the thread turned it on:
+  `node C:/Users/Omar/.claude/hooks/voice-notify.mjs on` (also `off`, `status`). The thread is
+  found by `CLAUDE_CODE_SESSION_ID`, which equals the hook's `session_id`. Omar's global
+  CLAUDE.md tells every thread how. Changed outside both repositories; the old version is kept
+  next to it as `voice-notify.mjs.before-2026-10-25`.
+- **In learn mode:** turning it on is refused (attack A24). Learn mode never pings.
+- **Rejected:** keeping it on everywhere; removing it from doctrine's settings, which would change
+  doctrine.
