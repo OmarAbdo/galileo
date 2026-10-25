@@ -1,0 +1,4 @@
+id = "9"
+title = "The galileo score command"
+kind = "feature"
+scope = ["src/galileo/adapters/cli/**", "src/galileo/domain/scoring/outcome.py", "docs/roadmap.md"]

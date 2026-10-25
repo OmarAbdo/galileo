@@ -8,11 +8,13 @@ from pathlib import Path
 from typing import TextIO
 
 from galileo.adapters.cli.baseline_command import baseline
+from galileo.adapters.cli.score_command import score
 from galileo.adapters.storage.data_folder import data_folder
 from galileo.adapters.storage.score_files import ScoreFileError, ScoreFiles
 
 Command = Callable[[ScoreFiles, date, TextIO], int]
 COMMANDS: dict[str, tuple[Command, str]] = {
+    "score": (score, "this week's scores against the baseline, and the outcome"),
     "baseline": (baseline, "freeze the baselines a week of measuring allows"),
 }
 

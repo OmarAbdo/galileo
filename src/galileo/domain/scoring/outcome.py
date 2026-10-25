@@ -41,12 +41,16 @@ def recent(records: Iterable[Record], today: date) -> list[float]:
     return [record.value for record in in_window(records, today)]
 
 
-def share(score: Score, today: date) -> float:
-    """The recent mean as a share of the baseline: 1 is the baseline, more is better."""
+def weekly_mean(score: Score, today: date) -> float | None:
     values = recent(score.records, today)
-    if score.baseline is None or score.baseline <= 0 or not values:
+    return sum(values) / len(values) if values else None
+
+
+def share(score: Score, today: date) -> float:
+    """The weekly mean as a share of the baseline: 1 is the baseline, more is better."""
+    mean = weekly_mean(score, today)
+    if score.baseline is None or score.baseline <= 0 or mean is None:
         return 0.0
-    mean = sum(values) / len(values)
     if score.kind in LOWER_IS_BETTER:
         return score.baseline / mean if mean > 0 else 0.0
     return mean / score.baseline
