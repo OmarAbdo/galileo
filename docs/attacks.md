@@ -32,6 +32,7 @@ otherwise.
 | A21 | 6 | Pointing Galileo at another data folder through `LOCALAPPDATA` or any `GALILEO_*` variable | Ignored: the folder comes from the known-folder API |
 | A22 | all | Editing Galileo's or doctrine's hooks or settings, Galileo's file in `managed-settings.d\`, or `disableAllHooks` in a project's settings | Refused (doctrine already protects these paths) |
 | A23 | all | Rewriting a script that a Galileo hook runs | Impossible: Galileo's hooks run only files under `C:\Program Files\Galileo` |
+| A24 | 3 | Turning the voice notification on in learn mode: `voice-notify.mjs on` | Refused: learn mode never pings (G15) |
 
 ## Gaps
 
