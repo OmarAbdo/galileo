@@ -1,0 +1,4 @@
+id = "17"
+title = "Install galileo for Omar"
+kind = "feature"
+scope = ["src/galileo/adapters/install.py", "src/galileo/adapters/cli/**", "docs/roadmap.md", "README.md"]

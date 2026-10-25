@@ -52,8 +52,14 @@ def test_bad_data_is_reported(tmp_path: Path) -> None:
 
 
 def test_the_commands_and_their_actions() -> None:
-    assert sorted(COMMANDS) == ["baseline", "kata", "score"]
+    assert sorted(COMMANDS) == ["baseline", "kata", "score", "update"]
     assert COMMANDS["kata"].actions == ("check", "stop")
+
+
+def test_update_before_an_install_says_how(tmp_path: Path) -> None:
+    output = io.StringIO()
+    assert run(["update"], tmp_path, NOW, output) == 1
+    assert "python -m galileo.adapters.install" in output.getvalue()
 
 
 def test_the_module_runs_and_lists_its_commands() -> None:
