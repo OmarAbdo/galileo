@@ -1,0 +1,4 @@
+id = "1"
+title = "Plan and handover docs"
+kind = "chore"
+scope = ["README.md", "CLAUDE.md", "STARTER_PROMPT.md", "docs/decisions.md"]
