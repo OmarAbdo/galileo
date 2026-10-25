@@ -1,0 +1,4 @@
+id = "12"
+title = "Markdown line length"
+kind = "chore"
+scope = [".markdownlint.json"]
