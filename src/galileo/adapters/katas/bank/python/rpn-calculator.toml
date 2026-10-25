@@ -1,0 +1,32 @@
+title = "Reverse Polish calculator"
+reference_seconds = 480
+prompt = """
+Write `evaluate(expression)` for reverse Polish notation: numbers and the operators `+ - * /`,
+separated by spaces, where an operator works on the two numbers before it. "3 4 + 2 *" is 14.
+Return a float. Raise `ValueError` when an operator lacks its numbers, a word is neither a
+number nor an operator, or the expression doesn't end with exactly one number.
+"""
+solution = '''
+def evaluate(expression: str) -> float:
+    raise NotImplementedError
+'''
+tests = '''
+import unittest
+
+from solution import evaluate
+
+
+class EvaluateTest(unittest.TestCase):
+    def test_operators_work_on_the_two_numbers_before_them(self) -> None:
+        self.assertEqual(evaluate("3 4 + 2 *"), 14)
+        self.assertEqual(evaluate("10 4 -"), 6)
+        self.assertEqual(evaluate("1 2 /"), 0.5)
+
+    def test_one_number_is_itself(self) -> None:
+        self.assertEqual(evaluate("5"), 5)
+
+    def test_bad_expressions_are_refused(self) -> None:
+        for expression in ["1 +", "1 2", "1 2 x", ""]:
+            with self.subTest(expression=expression), self.assertRaises(ValueError):
+                evaluate(expression)
+'''

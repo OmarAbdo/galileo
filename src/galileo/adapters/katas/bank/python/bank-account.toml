@@ -1,0 +1,53 @@
+title = "A bank account"
+reference_seconds = 480
+prompt = """
+Write a class `Account`. `Account("Ada")` keeps the owner and starts with a balance of 0.
+`deposit(amount)` and `withdraw(amount)` change the balance, which is a read-only property.
+Withdrawing more than the balance raises `InsufficientFundsError` (write that exception too),
+and an amount of 0 or less raises `ValueError`. `history` lists every change as a signed
+number, like `[100, -30]`.
+"""
+solution = '''
+class InsufficientFundsError(Exception):
+    pass
+
+
+class Account:
+    def __init__(self, owner: str) -> None:
+        raise NotImplementedError
+'''
+tests = '''
+import unittest
+
+from solution import Account, InsufficientFundsError
+
+
+class AccountTest(unittest.TestCase):
+    def test_a_new_account(self) -> None:
+        account = Account("Ada")
+        self.assertEqual((account.owner, account.balance, account.history), ("Ada", 0, []))
+
+    def test_deposits_and_withdrawals(self) -> None:
+        account = Account("Ada")
+        account.deposit(100)
+        account.withdraw(30)
+        self.assertEqual(account.balance, 70)
+        self.assertEqual(account.history, [100, -30])
+
+    def test_no_overdraft(self) -> None:
+        account = Account("Ada")
+        account.deposit(10)
+        with self.assertRaises(InsufficientFundsError):
+            account.withdraw(11)
+        self.assertEqual(account.balance, 10)
+
+    def test_amounts_must_be_positive(self) -> None:
+        account = Account("Ada")
+        for change in (account.deposit, account.withdraw):
+            with self.subTest(change=change.__name__), self.assertRaises(ValueError):
+                change(0)
+
+    def test_the_balance_is_read_only(self) -> None:
+        with self.assertRaises(AttributeError):
+            Account("Ada").balance = 5
+'''

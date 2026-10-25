@@ -1,0 +1,38 @@
+title = "Oldest first"
+reference_seconds = 360
+prompt = """
+People are dicts like `{"name": "Ada", "age": 36}`. Write `oldest_first(people)`: their names,
+oldest first, and by name for the same age. Write `by_initial(people)`: a dict from each first
+letter to the names that start with it, in the order the people came.
+"""
+solution = '''
+def oldest_first(people: list[dict]) -> list[str]:
+    raise NotImplementedError
+
+
+def by_initial(people: list[dict]) -> dict[str, list[str]]:
+    raise NotImplementedError
+'''
+tests = '''
+import unittest
+
+from solution import by_initial, oldest_first
+
+PEOPLE = [
+    {"name": "Cleo", "age": 30},
+    {"name": "Ada", "age": 36},
+    {"name": "Bob", "age": 30},
+    {"name": "Alan", "age": 41},
+]
+
+
+class PeopleTest(unittest.TestCase):
+    def test_oldest_first_then_by_name(self) -> None:
+        self.assertEqual(oldest_first(PEOPLE), ["Alan", "Ada", "Bob", "Cleo"])
+
+    def test_names_by_initial_in_the_order_given(self) -> None:
+        self.assertEqual(by_initial(PEOPLE), {"C": ["Cleo"], "A": ["Ada", "Alan"], "B": ["Bob"]})
+
+    def test_nobody(self) -> None:
+        self.assertEqual((oldest_first([]), by_initial([])), ([], {}))
+'''
