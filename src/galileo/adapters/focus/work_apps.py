@@ -7,33 +7,20 @@ from pathlib import Path
 
 from galileo.adapters.focus.samples import FocusFileError
 
-DEFAULT_WORK_APPS = (
-    "code.exe",
-    "cursor.exe",
-    "devenv.exe",
-    "idea64.exe",
-    "pycharm64.exe",
-    "goland64.exe",
-    "windowsterminal.exe",
-    "powershell.exe",
-    "pwsh.exe",
-    "cmd.exe",
-    "obsidian.exe",
-)
-
-
-def default_text() -> str:
-    names = "".join(f'    "{name}",\n' for name in DEFAULT_WORK_APPS)
-    return (
-        f"# Apps that count as your own work for the focus score: file names.\nwork = [\n{names}]\n"
-    )
+DEFAULT_TEXT = """# Apps that count as your own work for the focus score: their file names.
+work = [
+    "code.exe", "cursor.exe", "devenv.exe", "idea64.exe", "pycharm64.exe", "goland64.exe",
+    "windowsterminal.exe", "powershell.exe", "pwsh.exe", "cmd.exe", "obsidian.exe",
+]
+"""
+DEFAULT_WORK_APPS = frozenset(tomllib.loads(DEFAULT_TEXT)["work"])
 
 
 def work_apps(folder: Path) -> frozenset[str]:
     path = folder / "focus.toml"
     if not path.exists():
         folder.mkdir(parents=True, exist_ok=True)
-        path.write_text(default_text(), encoding="utf-8")
+        path.write_text(DEFAULT_TEXT, encoding="utf-8")
     try:
         names = tomllib.loads(path.read_text(encoding="utf-8"))["work"]
     except (tomllib.TOMLDecodeError, KeyError) as problem:
