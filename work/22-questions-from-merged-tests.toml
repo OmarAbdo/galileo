@@ -1,0 +1,4 @@
+id = "22"
+title = "Questions from merged tests"
+kind = "feature"
+scope = ["src/galileo/adapters/understanding/**", "src/galileo/domain/understanding/question.py", "docs/roadmap.md"]

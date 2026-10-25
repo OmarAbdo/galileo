@@ -17,6 +17,7 @@ class Question:
     place: str
     expression: str
     expected: str
+    context: str = ""  # what Omar sees: the test's setup, ending with `<expression> == ?`
 
 
 @dataclass(frozen=True)
