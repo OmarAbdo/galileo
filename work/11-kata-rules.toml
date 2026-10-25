@@ -1,0 +1,4 @@
+id = "11"
+title = "Kata rules"
+kind = "feature"
+scope = ["src/galileo/domain/katas/**", "src/galileo/application/katas.py", "docs/roadmap.md"]
