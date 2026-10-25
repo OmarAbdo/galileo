@@ -33,7 +33,7 @@ help.
 | 1.4e | feature | Six more Python katas: generators, dataclasses, files, recursion, Roman numerals, a deep merge | the same test | ✅ |
 | 1.5 | feature | Hands: Go, Java and TypeScript katas | integration per language; a missing toolchain is skipped with its reason | ⬜ |
 | 1.6a | feature | Focus rules: blocks of 10+ minutes on work apps from 15-second samples; a glance of up to 30 s doesn't break a block, 5 idle minutes or a gap in the samples do; a day without any work-app use is a day off, not a 0 | unit: blocks, glances, idle, gaps; finished days recorded and forgotten | ✅ |
-| 1.6b | feature | The focus sampler: app names and idle time every 15 s on Windows, one samples file per day (app names only), the list of work apps, and finished days closed into records | integration: the sampler with a fake probe and clock; the files; the Windows probe on Windows | ⬜ |
+| 1.6b | feature | The focus sampler: app names and idle time every 15 s on Windows, one samples file per day (app names only), the list of work apps, and finished days closed into records | integration: the sampler with a fake probe and clock; the files; the Windows probe on Windows | ✅ |
 | 1.6c | feature | Running the sampler: started at logon from Omar's Startup folder, hidden, and by the install | integration: the startup file is written | ⬜ |
 | 1.7 | feature | Understanding: questions from a merged diff (changed functions, inputs from tests, answers by running) and `galileo quiz` | unit: selection. integration: a real diff in a temporary repo | ⬜ |
 | 1.8 | feature | `galileo score`: the three scores and the lowest | acceptance: a seeded data folder | ✅ |

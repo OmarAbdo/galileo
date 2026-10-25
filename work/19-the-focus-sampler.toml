@@ -1,0 +1,4 @@
+id = "19"
+title = "The focus sampler"
+kind = "feature"
+scope = ["src/galileo/adapters/focus/**", "src/galileo/domain/focus/blocks.py", "docs/roadmap.md"]

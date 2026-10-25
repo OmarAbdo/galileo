@@ -40,6 +40,8 @@ class Tally:
     previous: datetime | None = None
 
     def add(self, sample: Sample) -> None:
+        if self.previous and (sample.taken - self.previous).total_seconds() < SAMPLE_SECONDS / 2:
+            return  # a second sampler running at the same time: count each moment once
         kind = state(sample, self.work_apps)
         if self.breaks(sample, kind):
             self.close()
