@@ -112,9 +112,9 @@ attention residue on the old one (Leroy 2009).
   - **Focus:** minutes per day in unbroken blocks of 10 minutes or more on his own work, from the
     active window. App names only, never titles or content.
   - **Understanding:** the share of questions about his own merged code he answers right,
-    repeats a week later included. A question is "what does this function return for this
-    input": the function comes from the diff, the input from its tests, the answer from running
-    it. No model grades him.
+    repeats a week later included. A question is an `assert <expression> == <expected>` from a
+    test merged in the last 30 days: Omar says what the expression gives, and the expected value,
+    which CI already ran, is the answer. Answers are compared by value. No model grades him.
   - **Hands:** his time to pass coding exercises (katas) from memory, without AI, in Python, Go,
     Java and TypeScript.
 - **The number:** the lowest of the three, so no score can be bought with another. Doctrine

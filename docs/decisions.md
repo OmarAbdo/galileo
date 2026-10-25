@@ -91,6 +91,10 @@ old one struck through below it.
   running it.
 - **Why:** a model grading its own teaching would be generous. A tutor plugin's quiz was passed by
   pressing enter, because the right answer always came first.
+- **Changed:** 2026-10-25, Claude (roadmap 1.7a). The answer is the expected value of an
+  `assert <expression> == <expected>` in Omar's merged tests, which CI already ran, instead of
+  Galileo running the function itself. The guarantee is the same, and no sandbox for his code is
+  needed.
 
 ## G12. A start ritual only if it moves Omar's numbers (proposed)
 

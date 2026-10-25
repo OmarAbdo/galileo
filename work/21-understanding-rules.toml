@@ -1,0 +1,4 @@
+id = "21"
+title = "Understanding rules"
+kind = "feature"
+scope = ["src/galileo/domain/understanding/**", "src/galileo/application/understanding.py", "docs/roadmap.md", "docs/design.md", "docs/decisions.md"]
