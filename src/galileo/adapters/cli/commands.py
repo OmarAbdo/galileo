@@ -43,9 +43,12 @@ def update_now(context: Context) -> int:
     return 0
 
 
+# `galileo kata check`, `galileo kata stop`, or a language: `galileo kata go`.
+KATA_ACTIONS = ("check", "stop", "python", "go", "java", "typescript")
+
 COMMANDS = {
     "score": Command(score_now, "this week's scores against the baseline, and the outcome"),
-    "kata": Command(kata, "start the next kata or show the open one", ("check", "stop")),
+    "kata": Command(kata, "start the next kata or show the open one", KATA_ACTIONS),
     "quiz": Command(quiz, "questions about your merged code, for understanding"),
     "baseline": Command(baseline_now, "freeze the baselines a week of measuring allows"),
     "update": Command(update_now, "install the newest Galileo from the main branch"),

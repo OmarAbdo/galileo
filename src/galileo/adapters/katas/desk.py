@@ -6,10 +6,8 @@ from datetime import date, datetime
 from pathlib import Path
 
 from galileo.adapters.katas.bank import KataFileError
+from galileo.adapters.katas.languages import LANGUAGES
 from galileo.domain.katas.kata import Attempt, Kata, Session
-
-# The file Omar writes and the file with the kata's tests, per language.
-LANGUAGE_FILES = {"python": ("solution.py", "test_solution.py")}
 
 
 def parse_session(path: Path) -> Session:
@@ -40,9 +38,11 @@ class FileDesk:
     def open(self, kata: Kata, started: datetime) -> Session:
         work = self.folder / "work" / f"{kata.name}-{started:%Y%m%d-%H%M%S}"
         work.mkdir(parents=True)
-        solution, tests = LANGUAGE_FILES[kata.language]
-        (work / solution).write_text(kata.solution, encoding="utf-8")
-        (work / tests).write_text(kata.tests, encoding="utf-8")
+        files = LANGUAGES[kata.language]
+        (work / files.solution).write_text(kata.solution, encoding="utf-8")
+        (work / files.tests).write_text(kata.tests, encoding="utf-8")
+        for name, text in files.extra:
+            (work / name).write_text(text, encoding="utf-8")
         (work / "KATA.md").write_text(f"# {kata.title}\n\n{kata.prompt}\n", encoding="utf-8")
         session = Session(kata.name, kata.language, started, work)
         opened = {"kata": kata.name, "language": kata.language, "folder": str(work)}

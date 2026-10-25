@@ -1,0 +1,4 @@
+id = "25"
+title = "Katas in four languages"
+kind = "feature"
+scope = ["src/galileo/adapters/katas/**", "src/galileo/adapters/cli/**", "docs/roadmap.md", "README.md"]

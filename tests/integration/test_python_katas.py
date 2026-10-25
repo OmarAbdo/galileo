@@ -4,7 +4,7 @@ the tests, passes them. A kata that can't be solved, or is solved by its stub, i
 from pathlib import Path
 
 from galileo.adapters.katas.bank import TomlBank
-from galileo.adapters.katas.runner import UnittestRunner
+from galileo.adapters.katas.runner import KataRunner
 from galileo.domain.katas.kata import Kata
 
 ANSWERS = Path(__file__).parent / "kata_answers" / "python"
@@ -14,7 +14,7 @@ def passes(folder: Path, kata: Kata, solution: str) -> bool:
     folder.mkdir()
     (folder / "solution.py").write_text(solution, encoding="utf-8")
     (folder / "test_solution.py").write_text(kata.tests, encoding="utf-8")
-    return UnittestRunner().run(folder, "python").passed
+    return KataRunner().run(folder, "python").passed
 
 
 def answer(kata: Kata) -> str:
