@@ -1,0 +1,4 @@
+id = "6"
+title = "Define the outcome"
+kind = "chore"
+scope = ["doctrine.toml", "docs/decisions.md", "docs/roadmap.md"]
