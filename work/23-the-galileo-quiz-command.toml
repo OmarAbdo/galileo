@@ -1,0 +1,4 @@
+id = "23"
+title = "The galileo quiz command"
+kind = "feature"
+scope = ["src/galileo/adapters/understanding/**", "src/galileo/adapters/cli/**", "docs/roadmap.md", "README.md"]

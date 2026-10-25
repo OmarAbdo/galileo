@@ -11,6 +11,7 @@ from galileo.adapters.cli.context import Context
 from galileo.adapters.katas.bank import KataFileError
 from galileo.adapters.storage.data_folder import data_folder
 from galileo.adapters.storage.score_files import ScoreFileError
+from galileo.adapters.understanding.history import QuizFileError
 
 
 def parser() -> argparse.ArgumentParser:
@@ -28,7 +29,7 @@ def run(arguments: list[str], folder: Path, now: datetime, output: TextIO) -> in
     context = Context(folder, now, output, getattr(chosen, "action", None))
     try:
         return COMMANDS[chosen.command].run(context)
-    except (ScoreFileError, KataFileError) as problem:
+    except (ScoreFileError, KataFileError, QuizFileError) as problem:
         output.write(f"{problem}\n")
         return 1
 

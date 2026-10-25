@@ -37,7 +37,7 @@ help.
 | 1.6c | feature | Running the sampler: started at logon from Omar's Startup folder, hidden, and by the install and `galileo update`; one at a time through a lock; an old sampler leaves when a newer Galileo is installed | integration: the startup file is written; a second sampler doesn't get the lock; the sampler stops on a new install | ✅ |
 | 1.7a | feature | Understanding rules: a question is an assertion from a merged test, graded by value (an unquoted word is that string, `True` isn't `1`, floats compare as close); one asked once comes back a week later | unit: grading; what is due | ✅ |
 | 1.7b | feature | Questions from merged tests: each `assert <call> == <literal>` in a test file changed on `origin/main` in the last 30 days, shown with the test's setup up to that line | integration: a real git repository with a merged test and an unmerged one | ✅ |
-| 1.7c | feature | `galileo quiz`: asks the due questions, grades each answer, records understanding; the repositories in `understanding.toml` | integration: a quiz with right and wrong answers | ⬜ |
+| 1.7c | feature | `galileo quiz`: asks the due questions, grades each answer, records understanding; the repositories in `understanding.toml` | integration: a quiz with right and wrong answers | ✅ |
 | 1.8 | feature | `galileo score`: the three scores and the lowest | acceptance: a seeded data folder | ✅ |
 | 1.8b | feature | The install: a release folder per commit of main, a venv that finds it, `galileo` in `~/.local/bin` (already on Omar's PATH), and `galileo update` | integration: install from a test repository and run the command; update from its origin; keep three releases | ✅ |
 | 1.9 | chore | Baseline week: Omar works as usual; Galileo only measures | none | ⬜ |

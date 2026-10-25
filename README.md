@@ -40,6 +40,7 @@ Then, in a new terminal:
 | `galileo kata` | Starts the next Python kata, or shows the open one: prompt, file to write, time |
 | `galileo kata check` | Runs the kata's tests; a pass records hands |
 | `galileo kata stop` | Closes the kata without a record |
+| `galileo quiz` | Up to three questions about code merged in your repositories (listed in `understanding.toml`); each answer records understanding |
 | `galileo score` | This week's scores against the baseline, and the outcome |
 | `galileo baseline` | At the end of the first week: freezes each baseline, once |
 | `galileo update` | Installs the newest main |
