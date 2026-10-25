@@ -40,10 +40,18 @@ How to work:
 
 State:
 - 2026-10-25: project created with doctrine init; Omar set up github.com/OmarAbdo/galileo.
-  Phase 0 and items 1.1 and 1.2 merged. Omar set the required approvals to 0, so an item merges
-  once its gates pass; goalpost changes (doctrine.toml's outcome, `.github/`) still wait for his
-  approval. Work on without waiting for him; he reviews at the end of the day.
-- Next: the next open item in docs/roadmap.md (1.2b waits for Omar; 1.3 doesn't).
+  Omar set the required approvals to 0, so an item merges once its gates pass; goalpost changes
+  (doctrine.toml's outcome, `.github/`) still wait for his approval. Work on without waiting for
+  him; he reviews at the end of the day.
+- Phase 1 is built except 1.5 (Go, Java, TypeScript katas). On Omar's PC: `galileo` in
+  C:\Users\Omar\.local\bin, the release in %LOCALAPPDATA%\Galileo\app, the focus sampler
+  running and started at logon by galileo-focus.vbs in his Startup folder. After a merge that
+  changes what he runs, run `galileo update`.
+- PR #6 (the outcome in doctrine.toml) waits for Omar's approval; don't touch doctrine.toml or
+  metrics/ until it merges.
+- Lessons: an item is at most 400 lines and 15 files, so split early. CI runs on Linux, so keep
+  Windows-only lines few or diff coverage drops under 85%. Never write `# noqa` in any form.
+- Next: 1.5, then phase 2 (the guard).
 
 TASK:
 <the task, or "take the next open item">
