@@ -13,6 +13,7 @@ import venv
 from datetime import UTC, datetime
 from pathlib import Path
 
+from galileo.adapters.focus.autostart import keep_sampling, startup_folder
 from galileo.adapters.storage.data_folder import data_folder, windows_profile
 
 KEEP_RELEASES = 3
@@ -83,9 +84,11 @@ def install(repository: Path, home: Path, commands: Path, ref: str) -> Path:
         venv.EnvBuilder(with_pip=False).create(environment)
     (site_packages(environment) / "galileo.pth").write_text(f"{release / 'src'}\n", "utf-8")
     command = write_command(commands, interpreter(environment))
-    installed = {"commit": commit, "repository": str(repository), "commands": str(commands)}
+    record = home / "installed.json"
+    installed = json.loads(record.read_text(encoding="utf-8")) if record.exists() else {}
+    installed |= {"commit": commit, "repository": str(repository), "commands": str(commands)}
     installed["at"] = datetime.now(UTC).isoformat(timespec="seconds")
-    (home / "installed.json").write_text(json.dumps(installed), encoding="utf-8")
+    record.write_text(json.dumps(installed), encoding="utf-8")
     prune(home / "releases", release)
     return command
 
@@ -105,7 +108,10 @@ def update(home: Path) -> str:
 
 def main() -> int:
     repository = Path(__file__).resolve().parents[3]
-    command = install_main(repository, data_folder() / "app", commands_folder())
+    home = data_folder() / "app"
+    command = install_main(repository, home, commands_folder())
+    if WINDOWS:
+        keep_sampling(home, startup_folder())
     sys.stdout.write(f"Installed: {command}. Open a new terminal and run `galileo score`.\n")
     return 0
 

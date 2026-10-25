@@ -1,16 +1,13 @@
-"""`python -m galileo.adapters.focus.sampler`: samples what is in front of Omar every 15 seconds
-and closes each finished day into a focus record. It runs hidden from his Startup folder."""
+"""The sampler: samples what is in front of Omar every 15 seconds and closes each finished day
+into a focus record. It stops when a newer Galileo is installed, so the new one can take over."""
 
-import sys
 import time
 from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import date, datetime
 
-from galileo.adapters.focus.probe import foreground_app, idle_seconds, windows_dlls
 from galileo.adapters.focus.samples import FileSamples
 from galileo.adapters.focus.work_apps import work_apps
-from galileo.adapters.storage.data_folder import data_folder
 from galileo.adapters.storage.score_files import ScoreFiles
 from galileo.application.focus import close_days
 from galileo.domain.focus.blocks import SAMPLE_SECONDS, Sample
@@ -23,6 +20,7 @@ class Sampler:
     scores: ScoreFiles
     now: Callable[[], datetime] = datetime.now
     sleep: Callable[[float], None] = time.sleep
+    installed: Callable[[], str] = str
     last_day: date | None = None
 
     def tick(self) -> None:
@@ -34,23 +32,8 @@ class Sampler:
         self.samples.append(self.read(now))
 
     def run(self, rounds: int | None = None) -> None:
-        done = 0
-        while rounds is None or done < rounds:
+        release, done = self.installed(), 0
+        while (rounds is None or done < rounds) and self.installed() == release:
             self.tick()
             self.sleep(SAMPLE_SECONDS)
             done += 1
-
-
-def main() -> int:
-    dlls = windows_dlls()
-    folder = data_folder()
-
-    def read(now: datetime) -> Sample:
-        return Sample(now, foreground_app(dlls), idle_seconds(dlls))
-
-    Sampler(read, FileSamples(folder / "focus"), ScoreFiles(folder)).run()
-    return 0
-
-
-if __name__ == "__main__":
-    sys.exit(main())

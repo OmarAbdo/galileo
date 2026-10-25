@@ -44,6 +44,11 @@ Then, in a new terminal:
 | `galileo baseline` | At the end of the first week: freezes each baseline, once |
 | `galileo update` | Installs the newest main |
 
+The install also starts the focus sampler and adds `galileo-focus.vbs` to your Startup folder, so
+it runs hidden at every logon. It records only the file name of the app in front and your idle
+time; edit `focus.toml` in the data folder to choose which apps count as work. To stop it, delete
+that Startup file and end `pythonw.exe` in Task Manager.
+
 Scores live in `C:\Users\Omar\AppData\Local\Galileo`, never in this repository.
 
 ## A learn session in one screen (planned)
