@@ -1,0 +1,4 @@
+id = "13"
+title = "Kata files and runner"
+kind = "feature"
+scope = ["src/galileo/adapters/katas/**", "docs/roadmap.md"]
