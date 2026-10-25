@@ -1,0 +1,4 @@
+id = "8"
+title = "The galileo baseline command"
+kind = "feature"
+scope = ["src/galileo/adapters/cli/**", "docs/roadmap.md"]
