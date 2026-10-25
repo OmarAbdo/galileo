@@ -25,6 +25,27 @@ so Galileo tames the harness around Claude ([docs/problem.md](docs/problem.md)).
 | See what gets built, in which order, with which tests | [docs/roadmap.md](docs/roadmap.md) |
 | See every bypass the self-test must catch | [docs/attacks.md](docs/attacks.md) |
 
+## Use it now
+
+Once, from this repository (any Python 3.12 or newer):
+
+```text
+python -m galileo.adapters.install   # run with PYTHONPATH=src; puts `galileo` in ~/.local/bin
+```
+
+Then, in a new terminal:
+
+| Command | What it does |
+|---|---|
+| `galileo kata` | Starts the next Python kata, or shows the open one: prompt, file to write, time |
+| `galileo kata check` | Runs the kata's tests; a pass records hands |
+| `galileo kata stop` | Closes the kata without a record |
+| `galileo score` | This week's scores against the baseline, and the outcome |
+| `galileo baseline` | At the end of the first week: freezes each baseline, once |
+| `galileo update` | Installs the newest main |
+
+Scores live in `C:\Users\Omar\AppData\Local\Galileo`, never in this repository.
+
 ## A learn session in one screen (planned)
 
 ```text
@@ -43,5 +64,6 @@ galileo score                        # focus, understanding, hands, and the lowe
 
 | Part | Status (2026-10-25) |
 |---|---|
-| Problem, design, decisions, roadmap, attacks | Written, in review |
-| Everything else | Not built ([docs/roadmap.md](docs/roadmap.md)) |
+| Problem, design, decisions, roadmap, attacks | Written |
+| Scores, the outcome, the baseline, Python katas, the install | Built ([docs/roadmap.md](docs/roadmap.md), phase 1) |
+| Focus and understanding scores, the guard, jobs | Not built yet |

@@ -35,6 +35,7 @@ help.
 | 1.6 | feature | Focus: the active-window sampler, and blocks of 10+ minutes on apps Omar marks as work | unit: blocks from samples. integration: a fake window source | ⬜ |
 | 1.7 | feature | Understanding: questions from a merged diff (changed functions, inputs from tests, answers by running) and `galileo quiz` | unit: selection. integration: a real diff in a temporary repo | ⬜ |
 | 1.8 | feature | `galileo score`: the three scores and the lowest | acceptance: a seeded data folder | ✅ |
+| 1.8b | feature | The install: a release folder per commit of main, a venv that finds it, `galileo` in `~/.local/bin` (already on Omar's PATH), and `galileo update` | integration: install from a test repository and run the command; update from its origin; keep three releases | ✅ |
 | 1.9 | chore | Baseline week: Omar works as usual; Galileo only measures | none | ⬜ |
 
 ## Phase 2: the guard (rules 3 and 4, modes)
