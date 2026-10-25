@@ -1,0 +1,4 @@
+id = "4"
+title = "Scores and the outcome"
+kind = "feature"
+scope = ["src/galileo/domain/scoring/**", "src/galileo/application/outcome.py"]
