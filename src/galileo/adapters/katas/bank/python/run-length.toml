@@ -1,0 +1,35 @@
+title = "Run-length encoding"
+reference_seconds = 420
+prompt = """
+Write `encode(text)` and `decode(text)`. `encode` replaces each run of one letter by the run's
+length and the letter, and leaves out a length of 1: "aaabcc" becomes "3ab2c". `decode` turns
+it back. Texts contain letters only.
+"""
+solution = '''
+def encode(text: str) -> str:
+    raise NotImplementedError
+
+
+def decode(text: str) -> str:
+    raise NotImplementedError
+'''
+tests = '''
+import unittest
+
+from solution import decode, encode
+
+
+class RunLengthTest(unittest.TestCase):
+    def test_encode(self) -> None:
+        self.assertEqual(encode("aaabcc"), "3ab2c")
+        self.assertEqual(encode("abc"), "abc")
+        self.assertEqual(encode(""), "")
+
+    def test_decode(self) -> None:
+        self.assertEqual(decode("3ab2c"), "aaabcc")
+        self.assertEqual(decode("12a"), "a" * 12)
+
+    def test_there_and_back(self) -> None:
+        text = "wwwwwwwwwwwwbbbx"
+        self.assertEqual(decode(encode(text)), text)
+'''

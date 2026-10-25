@@ -1,0 +1,26 @@
+title = "Word counts"
+reference_seconds = 300
+prompt = """
+Write `word_counts(text)`. It returns a dict from each word to how often it appears.
+A word is a run of letters from a to z, compared without case: "The" and "the" are one word.
+"""
+solution = '''
+def word_counts(text: str) -> dict[str, int]:
+    raise NotImplementedError
+'''
+tests = '''
+import unittest
+
+from solution import word_counts
+
+
+class WordCountsTest(unittest.TestCase):
+    def test_it_counts_each_word(self) -> None:
+        self.assertEqual(word_counts("one fish two fish"), {"one": 1, "fish": 2, "two": 1})
+
+    def test_case_and_punctuation_dont_matter(self) -> None:
+        self.assertEqual(word_counts("The cat, the hat."), {"the": 2, "cat": 1, "hat": 1})
+
+    def test_no_words(self) -> None:
+        self.assertEqual(word_counts(" ...! "), {})
+'''

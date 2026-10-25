@@ -1,0 +1,29 @@
+title = "Pairs that add up"
+reference_seconds = 300
+prompt = """
+Write `pairs(numbers, target)`. It returns every pair of positions `(i, j)` with `i < j` whose
+numbers add up to `target`, ordered by `i` and then by `j`.
+"""
+solution = '''
+def pairs(numbers: list[int], target: int) -> list[tuple[int, int]]:
+    raise NotImplementedError
+'''
+tests = '''
+import unittest
+
+from solution import pairs
+
+
+class PairsTest(unittest.TestCase):
+    def test_pairs_come_in_order(self) -> None:
+        self.assertEqual(pairs([1, 2, 3, 4], 5), [(0, 3), (1, 2)])
+
+    def test_equal_numbers_pair_up_too(self) -> None:
+        self.assertEqual(pairs([2, 2, 2], 4), [(0, 1), (0, 2), (1, 2)])
+
+    def test_a_number_doesnt_pair_with_itself(self) -> None:
+        self.assertEqual(pairs([5], 10), [])
+
+    def test_no_numbers(self) -> None:
+        self.assertEqual(pairs([], 1), [])
+'''
