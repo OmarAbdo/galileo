@@ -1,0 +1,4 @@
+id = "18"
+title = "Focus rules"
+kind = "feature"
+scope = ["src/galileo/domain/focus/**", "src/galileo/application/focus.py", "docs/roadmap.md"]
