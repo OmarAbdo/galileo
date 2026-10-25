@@ -1,0 +1,4 @@
+id = "2"
+title = "Problem and design docs"
+kind = "chore"
+scope = ["docs/problem.md", "docs/design.md"]
